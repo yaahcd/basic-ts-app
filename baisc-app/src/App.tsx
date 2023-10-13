@@ -21,7 +21,7 @@ export default function App() {
   useEffect(() => {
     const fetchPokemons = async () => {
       const pokemonList = await getData<Data>(
-        "https://pokeapi.co/api/v2/pokemon/"
+        "https://pokeapi.co/api/v2/pokemon?limit=500/"
       );
       setPokemons(pokemonList.results);
     };
