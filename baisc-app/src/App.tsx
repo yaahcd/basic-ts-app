@@ -51,7 +51,7 @@ export default function App() {
         onChangeHandler={onSearchChange}
         placeholder="search pokemons"
       />
-      <CardList pokemons={pokemons}/>
+      <CardList pokemons={filteredPokemons} />
     </div>
   );
 }

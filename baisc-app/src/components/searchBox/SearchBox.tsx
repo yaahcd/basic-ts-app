@@ -1,4 +1,4 @@
-import { ChangeEvent} from "react";
+import { ChangeEvent } from "react";
 import "./searchBox.styles.css";
 
 type SearchBoxProps = {
@@ -18,7 +18,6 @@ export default function SearchBox({
       type="search"
       placeholder={`${placeholder}`}
       onChange={onChangeHandler}
-    ></input>
+    />
   );
 }
- 
