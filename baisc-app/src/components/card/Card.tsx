@@ -1,9 +1,15 @@
-import './card.styles.css'
+import { Pokemon } from "../../App";
+import "./card.styles.css";
 
-export default function Card() {
+type CardProps = {
+  pokemon: Pokemon;
+};
+
+export default function Card({ pokemon }: CardProps) {
   return (
-    <div>
-      
+    <div className="card-container">
+      <img src="" alt={`Pokemon ${pokemon.name}`} />
+      <h2>{pokemon.name}</h2>
     </div>
-  )
+  );
 }

@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect, ChangeEvent } from "react";
+import CardList from "./components/cardList/CardList";
+import SearchBox from "./components/searchBox/SearchBox";
+import { getData } from "./utils/data.utils";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface Data {
+  results: [];
 }
 
-export default App
+export type Pokemon = {
+  name: string;
+  url: string;
+};
+
+export default function App() {
+  const [searchField, setSearchField] = useState("");
+  const [pokemons, setPokemons] = useState<Array<Pokemon>>([]);
+  const [filteredPokemons, setFilteredPokemons] = useState(pokemons);
+
+  useEffect(() => {
+    const fetchPokemons = async () => {
+      const pokemonList = await getData<Data>(
+        "https://pokeapi.co/api/v2/pokemon/"
+      );
+      setPokemons(pokemonList.results);
+    };
+
+    fetchPokemons();
+  }, []);
+
+  useEffect(() => {
+    const newFilteredPokemons = pokemons.filter((pokemon) => {
+      return pokemon.name.toLowerCase().includes(searchField);
+    });
+
+    setFilteredPokemons(newFilteredPokemons);
+  }, [pokemons, searchField]);
+
+  const onSearchChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const searchFieldString = e.target.value.toLowerCase();
+    setSearchField(searchFieldString);
+  };
+
+  return (
+    <div className="App">
+      <h1 className="app-title">Pokédex</h1>
+
+      <SearchBox
+        className="pokemons-search-box"
+        onChangeHandler={onSearchChange}
+        placeholder="search pokemons"
+      />
+      <CardList pokemons={pokemons}/>
+    </div>
+  );
+}
