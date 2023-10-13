@@ -6,6 +6,17 @@
     background-color: red;
     border-radius: 10px;
     flex-wrap: wrap;
+    animation-name: load;
+    animation-duration: 1s;
+}
+
+@keyframes load {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
   .search-box {
