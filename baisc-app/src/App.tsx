@@ -47,9 +47,8 @@ export default function App() {
       <h1 className="app-title">Pokédex</h1>
 
       <SearchBox
-        className="pokemons-search-box"
         onChangeHandler={onSearchChange}
-        placeholder="search pokemons"
+        placeholder="search for pokemons"
       />
       <CardList pokemons={filteredPokemons} />
     </div>

@@ -1,8 +1,90 @@
-.search-box {
-    border: none;
+.search-box-container {
+    width: 85vw;
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-between;
+    background-color: red;
+    border-radius: 10px;
+    flex-wrap: wrap;
+}
+
+  .search-box {
+    align-self: center;
+    text-align: center;
+    font-size: 18px;
+    background-color: transparent;
+    border: 1px solid black;
     outline: none;
     padding: 10px;
-    width: 150px;
-    line-height: 30px;
-    margin-bottom: 30px;
+    width: auto;
+    height: 50px;
+    border-radius: 10px;
+    color: white;
+  }
+
+  .search-box::placeholder {
+    color: white;
+    font-size: 18px;
+  }
+
+  .large-btn-container {
+    position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 5px 5px;
+  }
+
+  .blue-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+    height: 60px;
+    width: 60px;
+    border: solid black;
+    border-radius: 50%;
+    background-color: white;
+  }
+
+  .inner-blue-btn {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: solid black;
+    background-color: #1657a1;
+  }
+
+  .small-btn-container {
+    margin-right: 15px;
+    margin-top: 10px;
+    width: 70px;
+    height: 100%;
+    display: flex;
+    align-self: start;
+    justify-content: space-around;
+  }
+
+  .red-btn {
+    border: solid black;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: red;
+  }
+
+  .yellow-btn {
+    border: solid black;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: yellow;
+  }
+
+  .green-btn {
+    border: solid black;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: green;
   }
